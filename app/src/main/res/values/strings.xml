@@ -1,4 +1,42 @@
 <resources>
     <string name="app_name">Quote Management</string>
-    <string name="hello_world_abc">Hello, World ABC!</string>
+    <string name="menu_add">Add Product</string>
+    <string name="menu_edit">Edit Product</string>
+    <string name="save">Save Product</string>
+    <string name="product_updated">Product updated successfully!</string>
+    <string name="menu_products">Products</string>
+    <string name="menu_cart">Cart</string>
+    <string name="add_product">Add Product</string>
+    <string name="product_name">Product Name</string>
+    <string name="description">Description</string>
+    <string name="price">Price (CAD)</string>
+    <string name="category">Category</string>
+    <string name="select_date">Select Addition Date</string>
+    <string name="newStr">New</string>
+    <string name="used">Used</string>
+    <string name="submit">Submit</string>
+    <string name="product_list">Product List</string>
+    <string name="cart">Cart</string>
+    <string name="date_selected">Date Selected: %s</string>
+    <string name="fill_all_fields">Please fill all the required fields</string>
+    <string name="invalid_price_format">Invalid price format</string>
+    <string name="select_category">Please select a category</string>
+    <string name="select_condition">Please select a condition</string>
+    <string name="delete">Delete</string>
+    <string name="edit">Edit</string>
+    <string name="product_added">Product added successfully!\nProduct Name: %s\nDescription: %s\nPrice: %.2f CAD\nCategory: %s\nDate: %d-%d-%d\nCondition: %s\nFinal Price: %.2f CAD</string>
+
+
+    <!-- Define product categories for Spinner -->
+    <string-array name="product_categories">
+        <item>Select Category</item>
+        <item>Electronics</item>
+        <item>Food</item>
+        <item>Clothing</item>
+        <item>Mobiles</item>
+    </string-array>
+    <string-array name="language_array">
+        <item>English</item>
+        <item>French</item>
+    </string-array>
 </resources>

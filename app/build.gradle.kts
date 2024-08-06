@@ -1,5 +1,6 @@
 plugins {
     alias(libs.plugins.android.application)
+    // No Kotlin plugin needed
 }
 
 android {
@@ -32,9 +33,10 @@ android {
 }
 
 dependencies {
-
-    implementation(libs.appcompat)
     implementation(libs.material)
+    implementation(libs.appcompat)
+    implementation(libs.recyclerview)
+    implementation("com.google.code.gson:gson:2.10.1")
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
