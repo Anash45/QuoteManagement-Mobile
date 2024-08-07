@@ -4,6 +4,12 @@
     <string name="menu_edit">Modifier le produit</string>
     <string name="save">Enregistrer le produit</string>
     <string name="product_updated">Produit mis à jour avec succès !</string>
+    <string name="product_not_found">Produit introuvable !</string>
+    <string name="products_not_found">Produits introuvable !</string>
+    <string name="no_items_in_cart">Aucun article dans le panier</string>
+    <string name="total1">Total hors taxes</string>
+    <string name="total2">Total avec taxes</string>
+    <string name="remove_item">Remove</string>
     <string name="menu_products">Produits</string>
     <string name="menu_cart">Panier</string>
     <string name="add_product">Ajouter un produit</string>
@@ -25,7 +31,8 @@
     <string name="delete">Éliminer</string>
     <string name="edit">Modifier</string>
     <string name="product_added">Produit ajouté avec succès !\nNom du produit : %s\nDescription : %s\nPrix : %.2f CAD\nCatégorie : %s\nDate : %d-%d-%d\nCondition : %s\nPrix final : %.2f CAD</string>
-
+    <string name="english">English</string>
+    <string name="french">Français</string>
     <!-- Define product categories for Spinner -->
     <string-array name="product_categories">
         <item>Sélectionner une catégorie</item>
@@ -34,8 +41,8 @@
         <item>Vêtements</item>
         <item>Mobiles</item>
     </string-array>
-    <string-array name="language_array">
-        <item>English</item>
-        <item>Français</item>
+    <string-array name="language_options">
+        <item>@string/english</item>
+        <item>@string/french</item>
     </string-array>
 </resources>

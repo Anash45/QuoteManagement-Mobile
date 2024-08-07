@@ -1,55 +1,66 @@
 package com.example.helloworld;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
-import androidx.annotation.NonNull;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
+
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
 
     private final FragmentManager fragmentManager = getSupportFragmentManager();
     private Spinner spinnerLanguage;
+    private boolean isFirstLoad = true;
+    private SharedPreferences langPrefs;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
-        spinnerLanguage = findViewById(R.id.spinnerLanguage);
+        // Initialize SharedPreferences for language preference
+        langPrefs = getSharedPreferences("LangPrefs", MODE_PRIVATE);
 
+        // Initialize Spinner for language selection
+        spinnerLanguage = findViewById(R.id.spinner_language);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
-                R.array.language_array, android.R.layout.simple_spinner_item);
+                R.array.language_options, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerLanguage.setAdapter(adapter);
 
-        // Set the selected item based on current language
-        String currentLanguage = Locale.getDefault().getLanguage();
-        if (currentLanguage.equals("fr")) {
-            spinnerLanguage.setSelection(1);
+        // Load and set the saved language preference
+        String savedLanguage = langPrefs.getString("language", "en");
+        if ("fr".equals(savedLanguage)) {
+            spinnerLanguage.setSelection(1); // Set French if saved preference is French
         } else {
-            spinnerLanguage.setSelection(0);
+            spinnerLanguage.setSelection(0); // Default to English
         }
 
         spinnerLanguage.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                // Language change logic removed for now
+                String languageCode = position == 0 ? "en" : "fr"; // 0 for English, 1 for French
+                if (!isFirstLoad && !savedLanguage.equals(languageCode)) {
+                    onLanguageChange(languageCode);
+                } else {
+                    isFirstLoad = false; // Mark initial load as complete
+                }
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
-                // Do nothing
+                // No action needed
             }
         });
 
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
         bottomNavigationView.setOnItemSelectedListener(item -> {
             Fragment selectedFragment = null;
 
@@ -79,4 +90,16 @@ public class MainActivity extends AppCompatActivity {
             bottomNavigationView.setSelectedItemId(R.id.nav_add_product); // Load the default fragment
         }
     }
+
+    private void onLanguageChange(String languageCode) {
+        // Save the selected language to SharedPreferences
+        SharedPreferences.Editor editor = langPrefs.edit();
+        editor.putString("language", languageCode);
+        editor.apply(); // Apply changes asynchronously
+
+        // Set the locale and reload the activity
+        LocaleHelper.setLocale(this, languageCode);
+        recreate(); // Recreate the activity to apply the new language
+    }
 }
+

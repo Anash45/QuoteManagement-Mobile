@@ -73,11 +73,19 @@ public class EditProductFragment extends Fragment {
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerCategory.setAdapter(adapter);
 
-        // Get product from arguments and prefill fields
+        // Retrieve and log the product ID
         if (getArguments() != null && getArguments().getString("productJson") != null) {
             String productJson = getArguments().getString("productJson");
             productToEdit = new Gson().fromJson(productJson, Product.class);
-            prefillProductDetails(productToEdit);
+
+            if (productToEdit != null) {
+                Log.d(TAG, "Product ID: " + productToEdit.getId());
+                prefillProductDetails(productToEdit);
+            } else {
+                Log.d(TAG, "Failed to deserialize Product.");
+            }
+        } else {
+            Log.d(TAG, "No product JSON provided.");
         }
 
         // Set up DatePicker button
@@ -159,6 +167,7 @@ public class EditProductFragment extends Fragment {
         // Create new Product object with updated details
         String category = (String) spinnerCategory.getItemAtPosition(categoryPosition);
 
+        int quantity = 1;
         Product updatedProduct = new Product(
                 productToEdit.getId(), // keep the original ID
                 productName,
@@ -166,7 +175,8 @@ public class EditProductFragment extends Fragment {
                 String.format("%.2f", price),
                 category,
                 selectedDate,
-                conditionText // use string "New" or "Used"
+                conditionText,
+                quantity
         );
 
         updateProductInSharedPreferences(updatedProduct);

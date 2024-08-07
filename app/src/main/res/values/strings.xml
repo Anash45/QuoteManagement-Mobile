@@ -4,6 +4,12 @@
     <string name="menu_edit">Edit Product</string>
     <string name="save">Save Product</string>
     <string name="product_updated">Product updated successfully!</string>
+    <string name="product_not_found">Product not found!</string>
+    <string name="products_not_found">Products not found!</string>
+    <string name="no_items_in_cart">No items in cart!</string>
+    <string name="total1">Total without tax</string>
+    <string name="total2">Total with tax</string>
+    <string name="remove_item">Remove</string>
     <string name="menu_products">Products</string>
     <string name="menu_cart">Cart</string>
     <string name="add_product">Add Product</string>
@@ -25,6 +31,8 @@
     <string name="delete">Delete</string>
     <string name="edit">Edit</string>
     <string name="product_added">Product added successfully!\nProduct Name: %s\nDescription: %s\nPrice: %.2f CAD\nCategory: %s\nDate: %d-%d-%d\nCondition: %s\nFinal Price: %.2f CAD</string>
+    <string name="english">English</string>
+    <string name="french">French</string>
 
 
     <!-- Define product categories for Spinner -->
@@ -35,8 +43,8 @@
         <item>Clothing</item>
         <item>Mobiles</item>
     </string-array>
-    <string-array name="language_array">
-        <item>English</item>
-        <item>French</item>
+    <string-array name="language_options">
+        <item>@string/english</item>
+        <item>@string/french</item>
     </string-array>
 </resources>

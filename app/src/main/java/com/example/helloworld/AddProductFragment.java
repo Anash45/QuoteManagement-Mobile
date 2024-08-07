@@ -135,8 +135,9 @@ public class AddProductFragment extends Fragment {
         // Generate a unique ID for the product
         String productId = UUID.randomUUID().toString();
 
+        int quantity = 1;
         // Create and save the product
-        Product product = new Product(productId, productName, description, priceStr, spinnerCategory.getSelectedItem().toString(), selectedDate, conditionText);
+        Product product = new Product(productId, productName, description, priceStr, spinnerCategory.getSelectedItem().toString(), selectedDate, conditionText, quantity);
         saveProductToSharedPreferences(product);
 
         // Show result message
