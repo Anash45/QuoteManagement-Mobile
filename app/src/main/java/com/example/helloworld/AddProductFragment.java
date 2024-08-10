@@ -197,11 +197,11 @@ public class AddProductFragment extends Fragment {
 
 
     private void clearInputFields() {
-//        editTextProductName.setText("");
-//        editTextDescription.setText("");
-//        editTextPrice.setText("");
-//        spinnerCategory.setSelection(0); // Set to default category
-//        buttonDatePicker.setText(R.string.select_date);
-//        radioGroupCondition.clearCheck();
+        editTextProductName.setText("");
+        editTextDescription.setText("");
+        editTextPrice.setText("");
+        spinnerCategory.setSelection(0); // Set to default category
+        buttonDatePicker.setText(R.string.select_date);
+        radioGroupCondition.clearCheck();
     }
 }
